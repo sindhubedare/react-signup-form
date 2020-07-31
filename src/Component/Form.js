@@ -1,4 +1,6 @@
 import React from 'react';
+import Userinfo from './Userinfo';
+import '../App.css';
 
 
 class Form extends React.Component{
@@ -26,37 +28,47 @@ class Form extends React.Component{
     }
     onSubmit(event){
         event.PreventDefault(); 
+        this.setState({FormData: <Userinfo 
+            Email={this.state.Email}
+            Password={this.state.Password}
+            Age={this.state.Age}
+            Gender={this.state.Gender}
+            Occupation={this.state.Occupation}
+           
+    
+            /> })
     }
-    handleSubmit= () => alert("Submitted Email, Password, Age, Gender and Occupation" )
+    // handleSubmit= () => alert("Submitted Email, Password, Age, Gender and Occupation" )
 
 
     render(){
         return(
             <div>
-                <h3>Login</h3>
 
-                <form onSubmit={this.handleSubmit}>
-                    <label>Email/Username: </label>
+                <form onSubmit={this.onSubmit}>
+                    <label className="label">Email/Username: </label>
                     <input placeholder="Email" type="text" name="Email" value={this.state.Email} onChange={this.onChange}/>
                     <br/>
-                    <label>Password:</label>
+                    <label className="label">Password:</label>
                     <input placeholder="Password:" id="submit" type="password" name="Password" value={this.state.Password} onChange={this.onChange} />
                     <br/>
-                    <label>Gender: </label>
+                    <label className="label">Gender: </label>
+                    <br/>
                     <label for="female">Female:</label>
                     <input name="Gender" id="female"  type="radio" value={this.state.Gender} onChange={this.onChange}/>
+                    
                     <label for="male">Male:</label>
                     <input name="Gender" id="male" type="radio" value={this.state.Gender} onChange={this.onChange}/>
                     <label for="other">Other:</label>
                     <input name="Gender" id="other" type="radio" value={this.state.Gender} onChange= {this.onChange}/>
                    <br/>
-                   <label>Age:</label>
+                   <label className="label">Age:</label>
                     <input placeholder="age" type="text" name="Age" value={this.state.Age} onChange={this.onChange}/>
                     <br/>
-                    <label>Occupation:</label>
+                    <label className="label">Occupation:</label>
                     <input placeholder="occupation" type="text" name="Occupation" value={this.state.Occupation} onChange={this.onChange}  />
                     <br/>
-                      <label>
+                      <label className="button">
                         <input type="submit" value="Submit" />
                     </label> 
                 </form>
